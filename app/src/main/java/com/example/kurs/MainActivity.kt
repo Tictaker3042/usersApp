@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+
         val mainViewModel = (application as UsersApp).mainViewModel
 
         binding.button.setOnClickListener {
