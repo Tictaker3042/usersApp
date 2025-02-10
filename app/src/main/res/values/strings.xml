@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Kurs</string>
+    <string name="login_label">Логин</string>
+    <string name="login_hint">Введите ваш логин</string>
+    <string name="password_hint">Введите ваш пароль</string>
+    <string name="button_label">Войти</string>
+    <string name="to_list_label">Список</string>
+    <string name="to_main_label">Меню</string>
+    <string name="loginViewLabel">Логин</string>
+    <string name="passViewLabel">Пароль</string>
+</resources>
