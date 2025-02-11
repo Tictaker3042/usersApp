@@ -21,4 +21,6 @@ class UsersApp: Application() {
     val mainViewModel = MainViewModel(repository)
 
     val listViewModel = ListViewModel(repository)
+
+    val itemListViewModel = ItemListViewModel(repository, baseUrl)
 }

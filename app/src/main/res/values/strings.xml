@@ -8,4 +8,6 @@
     <string name="to_main_label">Меню</string>
     <string name="loginViewLabel">Логин</string>
     <string name="passViewLabel">Пароль</string>
+    <string name="backViewLabel">Назад</string>
+    <string name="user_image_description">Изображение пользователя</string>
 </resources>

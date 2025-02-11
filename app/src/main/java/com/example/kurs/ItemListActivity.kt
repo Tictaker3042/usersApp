@@ -1,0 +1,29 @@
+package com.example.kurs
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.lifecycle.ViewModel
+import com.example.kurs.databinding.ActivityItemListBinding
+
+class ItemListActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityItemListBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding = ActivityItemListBinding.inflate(layoutInflater)
+
+        setContentView(R.layout.activity_item_list)
+
+        val viewModel = (application as UsersApp).itemListViewModel
+
+        val id = intent.extras!!.getInt("user_id")
+
+        viewModel.getUserData(id, binding)
+
+        binding.backButton.setOnClickListener {
+            startActivity(Intent(this, ListActivity::class.java))
+        }
+    }
+}

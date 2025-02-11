@@ -20,4 +20,10 @@ class Repository(
             service.createUser(UserData(login, password, "/uploads/User_icon_2.png"))
         }
     }
+
+    suspend fun getUser(id: Int): UserData {
+        return withContext(dispatcher){
+            return@withContext service.getUser(id)
+        }
+    }
 }
