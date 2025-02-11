@@ -55,4 +55,17 @@ class Repository(
             )
         }
     }
+
+    suspend fun removeFromFavourites(userData: UserData) {
+        withContext(dispatcher) {
+            dao.deleteUser(
+                UsersCacheData(
+                    userData.id,
+                    userData.link,
+                    userData.login,
+                    userData.password
+                )
+            )
+        }
+    }
 }

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity("users")
 data class UsersCacheData(
     @PrimaryKey
     val id: Int,

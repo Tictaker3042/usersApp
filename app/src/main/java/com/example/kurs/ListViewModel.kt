@@ -17,4 +17,8 @@ class ListViewModel(
 
         adapter.update(usersData) // Обновляем данные адаптера
     }
+
+    fun saveUser(userData: UserData) = viewModelScope.launch(dispatcher) {
+        repository.addToFavourites(userData)
+    }
 }

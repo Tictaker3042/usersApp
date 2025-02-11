@@ -42,10 +42,16 @@ class ListActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val adapter = UsersListAdapter(baseUrl, emptyList(), lambda)
+        val listViewModel = (application as UsersApp).listViewModel
+
+        val favouritesLambda : (userData: UserData) -> Unit = { userData ->
+            listViewModel.saveUser(userData)
+        }
+
+        val adapter = UsersListAdapter(baseUrl, emptyList(), lambda, favouritesLambda)
         binding.recyclerView.adapter = adapter
 
-        val listViewModel = (application as UsersApp).listViewModel
+
 
         listViewModel.getUsers(adapter)
 

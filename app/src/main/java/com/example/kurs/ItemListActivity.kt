@@ -1,6 +1,5 @@
 package com.example.kurs
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.kurs.databinding.ActivityItemListBinding
@@ -18,11 +17,10 @@ class ItemListActivity : AppCompatActivity() {
         val viewModel = (application as UsersApp).itemListViewModel
 
         val id = intent.extras!!.getInt("user_id")
-
         viewModel.getUserData(id, binding)
 
         binding.backButton.setOnClickListener {
-            startActivity(Intent(this, ListActivity::class.java))
+            finish()
         }
     }
 }
