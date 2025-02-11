@@ -3,7 +3,6 @@ package com.example.kurs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.ViewModel
 import com.example.kurs.databinding.ActivityItemListBinding
 
 class ItemListActivity : AppCompatActivity() {
@@ -14,7 +13,7 @@ class ItemListActivity : AppCompatActivity() {
 
         binding = ActivityItemListBinding.inflate(layoutInflater)
 
-        setContentView(R.layout.activity_item_list)
+        setContentView(binding.root)
 
         val viewModel = (application as UsersApp).itemListViewModel
 
