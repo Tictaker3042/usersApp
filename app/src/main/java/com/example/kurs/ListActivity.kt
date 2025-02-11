@@ -52,5 +52,9 @@ class ListActivity : AppCompatActivity() {
         binding.buttonToMain.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
         }
+
+        binding.buttonToFavorites.setOnClickListener {
+            startActivity(Intent(this, FavouritesActivity::class.java))
+        }
     }
 }

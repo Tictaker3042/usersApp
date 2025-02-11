@@ -9,7 +9,8 @@ import com.squareup.picasso.Picasso
 class UsersListAdapter(
     private val baseUrl: String,
     private var list: List<UserData>,
-    private val lambda : (id: Int) -> Unit
+    private val lambda : (id: Int) -> Unit,
+    private val favouritesLambda : (userData: UserData) -> Unit
 ) : RecyclerView.Adapter<UsersListViewHolder>() {
 
     fun update(newList: List<UserData>){
@@ -20,7 +21,7 @@ class UsersListAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersListViewHolder {
         val binding = ItemLayoutBinding.inflate(LayoutInflater.from(parent.context))
 
-        return UsersListViewHolder(baseUrl, binding, lambda)
+        return UsersListViewHolder(baseUrl, binding, lambda, favouritesLambda)
     }
 
     override fun getItemCount() = list.size
@@ -34,7 +35,8 @@ class UsersListAdapter(
 class UsersListViewHolder(
     private val baseUrl : String,
     private val binding : ItemLayoutBinding,
-    private val lambda : (id:Int) -> Unit
+    private val lambda : (id: Int) -> Unit,
+    private val favouritesLambda : (userData: UserData) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(userData: UserData){
@@ -47,6 +49,10 @@ class UsersListViewHolder(
 
         binding.root.setOnClickListener {
             lambda(userData.id)
+        }
+
+        binding.imageButton.setOnClickListener {
+            favouritesLambda(userData)
         }
     }
 
