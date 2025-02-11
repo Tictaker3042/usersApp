@@ -6,6 +6,7 @@ import kotlinx.coroutines.withContext
 
 class Repository(
     private val service: UserService,
+    private val dao: UsersDAO,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
 
@@ -24,6 +25,34 @@ class Repository(
     suspend fun getUser(id: Int): UserData {
         return withContext(dispatcher){
             return@withContext service.getUser(id)
+        }
+    }
+
+    suspend fun addToFavourites(userData: UserData) {
+        withContext(dispatcher) {
+            dao.addUser(
+                UsersCacheData(
+                    userData.id,
+                    userData.link,
+                    userData.login,
+                    userData.password
+                )
+            )
+        }
+    }
+
+    suspend fun getFromFavourites() : List<UserData> {
+        val usersCacheData = withContext(dispatcher) {
+            return@withContext dao.getAllFavouriteUsers()
+        }
+
+        return usersCacheData.map { user ->
+            UserData(
+                user.login,
+                user.password,
+                user.link,
+                user.id
+            )
         }
     }
 }

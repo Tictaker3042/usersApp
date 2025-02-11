@@ -9,7 +9,7 @@ data class UsersCacheData(
     @PrimaryKey
     val id: Int,
     @ColumnInfo("image_link")
-    val image_link : String,
+    val link : String,
     @ColumnInfo("login")
     val login : String,
     @ColumnInfo("password")
